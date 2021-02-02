@@ -17,6 +17,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
+
+<?php wp_body_open(); ?>
 
 <header>Header</header>
