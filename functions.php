@@ -4,9 +4,16 @@
  *
  * @package Aquila
  */
-#echo '<pre>';
-#print_r( filemtime( get_template_directory() . '/style.css') );
-#wp_die();
+
+if ( ! defined( 'AQUILA_DIR_PATH' )) {
+    define ( 'AQUILA_DIR_PATH', untrailingslashit( get_theme_directory() ) );
+}
+
+echo '<pre>';
+print_r( AQUILA_DIR_PATH );
+wp_die();
+
+require_once AQUILA_DIR_PATH . '/inc/helpers/autoloader.php';
 
 function aquila_enqueue_scripts() {
     // Register Styles.
