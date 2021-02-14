@@ -27,12 +27,20 @@ class AQUILA_THEME {
     public function setup_theme() {
         add_theme_support( 'title-tag' );
 
+        # https://developer.wordpress.org/reference/functions/add_theme_support/#description
         add_theme_support( 'custom-logo', [
            'header-text' => array( 'site-title', 'site-description' ),
            'height'      => 100,
            'width'       => 400,
            'flex-height' => true,
            'flex-width'  => true,
+        ]);
+
+        # https://developer.wordpress.org/reference/functions/add_theme_support/#custom-background
+        add_theme_support( 'custom-background', [
+           'default-color'          => '#fff',
+           'default-image'          => '',
+           'default-repeat'         => 'no-repeat',
         ]);
     }
 
