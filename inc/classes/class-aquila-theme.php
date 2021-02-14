@@ -13,8 +13,9 @@ class AQUILA_THEME {
     use Singleton;
 
     protected function __construct() {
-        // load class.
+        // Load class.
         Assets::get_instance();
+        Menus::get_instance();
 
         $this->setup_hooks();
     }
