@@ -11,7 +11,7 @@ get_header();
 <div id="primary">
     <main id="main" class="site-main mt-5" role="main">
         <?php
-        if ( have_posts() ) {
+        if ( have_posts() ) :
             ?>
             <div class="container">
                 <?php
@@ -25,37 +25,39 @@ get_header();
                     <?php
                 }
                 ?>
-                <div class="row">
-                    <?php
-                        $index = 0;
-                        $no_of_columns = 3;
+					<div class="row">
+						<?php
+						$index         = 0;
+						$no_of_columns = 3;
 
-                        // Start the loop
-                        while( have_posts() ) : the_post();
-                            if ( $index % $no_of_columns === 0 ) {
-                                ?>
-                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                <?php
-                            }
-                            ?>
+						while ( have_posts() ) : the_post();
 
-                            <h4><?php the_title(); ?></h4>
-                            <div><?php the_excerpt(); ?><div>
+							if ( 0 === $index % $no_of_columns ) {
+								?>
+								<div class="col-lg-4 col-md-6 col-sm-12">
+								<?php
+							}
 
-                            <?php
-                            $index++;
+                            get_template_part( 'template-parts/content');
 
-                            if ( 0 !== $index && 0 === $index % $no_of_columns ) {
-                                ?>
-                                </div>
-                                <?php
-                            }
-                        endwhile;
-                    ?>
-                </div>
+							$index ++;
+
+							if ( 0 !== $index && 0 === $index % $no_of_columns ) {
+								?>
+								</div>
+								<?php
+							}
+
+						endwhile;
+						?>
+					</div>
             </div>
             <?php
-        }
+        else :
+            get_template_part( 'template-parts/content-none' );
+
+        endif;
+
         ?>
     </main>
 </div>
