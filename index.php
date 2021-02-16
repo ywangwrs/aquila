@@ -15,13 +15,44 @@ get_header();
             ?>
             <div class="container">
                 <?php
-                    while( have_posts() ) : the_post();
-                    echo "<b>";
-                    the_title();
-                    echo "</b>";
-                    the_content();
-                    endwhile;
+                if ( is_home() && ! is_front_page() ) {
+                    ?>
+                    <header class="mt-5">
+                        <h1 class="page-title screen-reader-text">
+                            <?php single_post_title(); ?>
+                        </h1>
+                    </header>
+                    <?php
+                }
                 ?>
+                <div class="row">
+                    <?php
+                        $index = 0;
+                        $no_of_columns = 3;
+
+                        // Start the loop
+                        while( have_posts() ) : the_post();
+                            if ( $index % $no_of_columns === 0 ) {
+                                ?>
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                <?php
+                            }
+                            ?>
+
+                            <h4><?php the_title(); ?></h4>
+                            <div><?php the_excerpt(); ?><div>
+
+                            <?php
+                            $index++;
+
+                            if ( 0 !== $index && 0 === $index % $no_of_columns ) {
+                                ?>
+                                </div>
+                                <?php
+                            }
+                        endwhile;
+                    ?>
+                </div>
             </div>
             <?php
         }
