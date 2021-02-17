@@ -5,7 +5,7 @@
  * @package Aquila
  */
 
-function get_the_post_thumbnail ( $post_id, $size = 'featured-large', $additional_attributes = [] ) {
+function get_the_post_custom_thumbnail ( $post_id, $size = 'featured-large', $additional_attributes = [] ) {
     $custom_thumbnail = '';
 
     if ( null === $post_id ) {
@@ -17,10 +17,7 @@ function get_the_post_thumbnail ( $post_id, $size = 'featured-large', $additiona
             'loading' => 'lazy'
         ];
     
-        $attributes = array_merge( $additional_attributes, $de
-        
-        
-        fault_attributes );
+        $attributes = array_merge( $additional_attributes, $default_attributes );
 
         $custom_thumbnail = wp_get_attachment_image(
             get_post_thumbnail_id( $post_id ),
@@ -34,7 +31,5 @@ function get_the_post_thumbnail ( $post_id, $size = 'featured-large', $additiona
 }
 
 function the_post_custom_thumbnail ( $post_id, $size = 'featured-large', $additional_attributes = [] ) {
-    echo get_the_post_thumbnail( $post_id, $size, $additional_attributes );
+    echo get_the_post_custom_thumbnail( $post_id, $size, $additional_attributes );
 }
-
-?>
