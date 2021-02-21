@@ -21,7 +21,12 @@ img {
     height: auto;
 }
 
-/* Entry meta */
+/* Entry meta: hide the modified date of post */
 .updated:not(.published) {
     display: none;
+}
+
+/* Nav item: hover to show sub-menu */
+.nav-item:hover .dropdown-menu.not(.show) {
+    display: block;
 }
