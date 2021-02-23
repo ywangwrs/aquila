@@ -26,7 +26,8 @@
             )
         );
     } else {
-        aquila_the_excerpt( 50 );
+        aquila_the_excerpt( 200 );
+        echo aquila_excerpt_more();
     }
     ?>
 </div>

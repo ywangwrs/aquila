@@ -1,4 +1,7 @@
 <?php
+
+use Symfony\Component\ExpressionLanguage\Node\FunctionNode;
+
 /**
  * Custom template tags for the theme.
  *
@@ -78,4 +81,16 @@ function aquila_the_excerpt( $trim_character_count = 0 ) {
     $excerpt = substr( $excerpt, 0, strrpos( $excerpt, ' ' ) );
 
     echo $excerpt . '[...]';
+}
+
+Function aquila_excerpt_more( $more = '' ){
+    if ( ! is_single() ) {
+        $more = sprintf(
+            '<button class="mt-r btn-sm btn-info"><a class="aquila-read-more text-white" href="%1$s">%2$s</a></button>',
+            get_permalink( get_the_ID() ),
+            __( 'Read more', 'aquila' )
+        );
+    }
+
+    return $more;
 }
