@@ -25,9 +25,18 @@
                 the_title( '<span class="screen-reader-text">"', '"</span>', false )
             )
         );
+
+        wp_link_pages(
+            [
+                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'aquila' ),
+                'after' => '</div>',
+            ]
+        );
+
     } else {
         aquila_the_excerpt( 200 );
         echo aquila_excerpt_more();
     }
+
     ?>
 </div>
